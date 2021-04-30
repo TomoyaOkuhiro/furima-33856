@@ -1,24 +1,41 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| nickname           | string              | null: false             |
+| e-mail             | string              | null: false             |
+| password           | string              | null: false             |
+| last_name          | string              | null: false             |
+| first_name         | string              | null: false             |
+| last_name_kana     | string              | null: false             |
+| first_name_kana    | string              | null: false             |
+| birth_year         | string              | null: false             |
+| birth_month        | string              | null: false             |
+| birth_day          | string              | null: false             |
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :item
 
-* Database creation
 
-* Database initialization
+## items table
 
-* How to run the test suite
+| Column                              | Type       | Options           |
+|-------------------------------------|------------|-------------------|
+| name                                | string     | null: false       |
+| description                         | text       | null: false       |
+| price                               | string     | null: false       |
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Association
 
-* ...
+- belongs_to :user
+
+
+### Supplement(補足)
+
+画像データはActive Storageを用いて実装
+データ選択にはActive Hashを用いて実装
