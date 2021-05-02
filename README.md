@@ -53,11 +53,9 @@
 |----------------------------------|-----------------|-------------------------------|
 | purchase_management              | references      | null: false, foreign_key: true|
 | post_code                        | string          | null: false                   |
-| items_id                         | references      | null: false, foreign_key: true|
-| city                             | string          | null: false                   |
-| address                          | string          | null: false                   |
-| building_name                    | string          |                               |
 | phone_number                     | string          | null: false                   |
+| shipping_area_id                 | integer         | null: false                   |
+
 
 ### Association
 
