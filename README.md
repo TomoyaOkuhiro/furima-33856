@@ -5,7 +5,7 @@
 | Column             | Type                | Options                  |
 |--------------------|---------------------|--------------------------|
 | nickname           | string              | null: false              |
-| email              | string              | null: false,              |
+| email              | string              | null: false, unique: true|
 | encrypted_password | string              | null: false              |
 | last_name          | string              | null: false              |
 | first_name         | string              | null: false              |
@@ -55,6 +55,9 @@
 | post_code                        | string          | null: false                   |
 | phone_number                     | string          | null: false                   |
 | shipping_area_id                 | integer         | null: false                   |
+| city                             | string          | null: false                   |
+| address                          | string          | null: false                   |
+| building_name                    | string          | null: false                   |
 
 
 ### Association
