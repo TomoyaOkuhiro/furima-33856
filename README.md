@@ -5,6 +5,7 @@
 | Column             | Type                | Options                  |
 |--------------------|---------------------|--------------------------|
 | nickname           | string              | null: false              |
+| email              | string              | null: false              |
 | encrypted_password | string              | null: false              |
 | last_name          | string              | null: false              |
 | first_name         | string              | null: false              |
@@ -17,7 +18,7 @@
 ### Association
 
 - has_many :items
-- belongs_to :purchase_management
+- has_many :purchase_management
 
 
 
@@ -26,40 +27,41 @@
 
 | Column                              | Type       | Options                       |
 |-------------------------------------|------------|-------------------------------|
-| name_id                             | string     | null: false, foreign_key: true|
+| name_id                             | string     | null: false                   |
 | description                         | text       | null: false                   |
-| price                               | string     | null: false                   |
-| category                            | integer    | null: false, foreign_key: true|
-| status_id                           | integer    | null: false, foreign_key: true|
-| shipping_cost_id                    | integer    | null: false, foreign_key: true|
-| shipping_area_id                    | integer    | null: false, foreign_key: true|
-| shipping_day_id                     | integer    | null: false, foreign_key: true|
+| price                               | integer    | null: false                   |
+| category                            | integer    | null: false                   |
+| status_id                           | integer    | null: false                   |
+| shipping_cost_id                    | integer    | null: false                   |
+| shipping_area_id                    | integer    | null: false                   |
+| shipping_day_id                     | integer    | null: false                   |
+| user                                | references | null: false, foreign_key: true|
 
 
 
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase_management
+- has_one :purchase_management
 
 
 
 
 ## address table
 
-| Column            | Type            | Options                       |
-|-------------------|-----------------|-------------------------------|
-| user_id           | integer         | null: false, foreign_key: true|
-| post_code         | string          | null: false                   |
-| prefecture        | string          | null: false                   |
-| city              | string          | null: false                   |
-| address           | string          | null: false                   |
-| building_name     | string          |                               |
-| phone_number      | string          | null: false                   |
+| Column                           | Type            | Options                       |
+|----------------------------------|-----------------|-------------------------------|
+| purchase_management_id           | integer         | null: false, foreign_key: true|
+| post_code                        | string          | null: false                   |
+| prefecture                       | integer         | null: false                   |
+| city                             | string          | null: false                   |
+| address                          | string          | null: false                   |
+| building_name                    | string          |                               |
+| phone_number                     | string          | null: false                   |
 
 ### Association
 
-- has_one :purchase_management
+- belongs_to :purchase_management
 
 
 
@@ -67,13 +69,13 @@
 
 | Column                 | Type    | Options          |
 |------------------------|---------|------------------|
-| purchase_management_id | integer | foreign_key: true|
+| user_id                | integer | foreign_key: true|
 | item_id                | integer | foreign_key: true|
 
 
 has_one :address
 belongs_to :user
-has_many :items
+belongs_to :items
 
 
 
