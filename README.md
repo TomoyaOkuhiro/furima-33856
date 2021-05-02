@@ -5,7 +5,7 @@
 | Column             | Type                | Options                  |
 |--------------------|---------------------|--------------------------|
 | nickname           | string              | null: false              |
-| email              | string              | null: false              |
+| email              | string              | null: false,              |
 | encrypted_password | string              | null: false              |
 | last_name          | string              | null: false              |
 | first_name         | string              | null: false              |
@@ -18,7 +18,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchase_management
+- has_many :purchase_managements
 
 
 
@@ -27,10 +27,10 @@
 
 | Column                              | Type       | Options                       |
 |-------------------------------------|------------|-------------------------------|
-| name_id                             | string     | null: false                   |
+| name                                | string     | null: false                   |
 | description                         | text       | null: false                   |
 | price                               | integer    | null: false                   |
-| category                            | integer    | null: false                   |
+| category_id                         | integer    | null: false                   |
 | status_id                           | integer    | null: false                   |
 | shipping_cost_id                    | integer    | null: false                   |
 | shipping_area_id                    | integer    | null: false                   |
@@ -47,13 +47,13 @@
 
 
 
-## address table
+## Addresses table
 
 | Column                           | Type            | Options                       |
 |----------------------------------|-----------------|-------------------------------|
-| purchase_management_id           | integer         | null: false, foreign_key: true|
+| purchase_management              | references      | null: false, foreign_key: true|
 | post_code                        | string          | null: false                   |
-| prefecture                       | integer         | null: false                   |
+| items_id                         | references      | null: false, foreign_key: true|
 | city                             | string          | null: false                   |
 | address                          | string          | null: false                   |
 | building_name                    | string          |                               |
@@ -65,17 +65,17 @@
 
 
 
-## purchase_management table
+## purchase_managements table
 
-| Column                 | Type    | Options          |
-|------------------------|---------|------------------|
-| user_id                | integer | foreign_key: true|
-| item_id                | integer | foreign_key: true|
+| Column                 | Type      | Options          |
+|------------------------|-----------|------------------|
+| user                   | references| foreign_key: true|
+| item                   | references| foreign_key: true|
 
 
 has_one :address
 belongs_to :user
-belongs_to :items
+belongs_to :item
 
 
 

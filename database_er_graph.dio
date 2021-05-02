@@ -37,8 +37,8 @@
                 <mxCell id="39" value="has_many :items" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
                     <mxGeometry x="160" y="20" width="370" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="has_many :purchase_management" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
-                    <mxGeometry x="290" y="40" width="200" height="20" as="geometry"/>
+                <mxCell id="40" value="has_many :purchase_managements" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+                    <mxGeometry x="285" y="40" width="210" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="41" value="belongs_to :user" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
                     <mxGeometry x="605" y="50" width="100" height="20" as="geometry"/>
@@ -46,7 +46,7 @@
                 <mxCell id="42" value="has_one :purchase_management" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
                     <mxGeometry x="605" y="70" width="190" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="Adress Table" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+                <mxCell id="43" value="AdressesTable" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="570" y="325" width="310" height="230" as="geometry">
                         <mxRectangle x="70" y="380" width="120" height="30" as="alternateBounds"/>
                     </mxGeometry>
@@ -54,14 +54,14 @@
                 <mxCell id="46" value="&lt;font style=&quot;font-size: 24px&quot;&gt;購入者情報&lt;br&gt;郵便番号&lt;br&gt;県&lt;br&gt;市&lt;br&gt;町、番地&lt;br&gt;建物、階&lt;br&gt;電話番号&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="43">
                     <mxGeometry y="30" width="310" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="47" value="Puchase_Management Table" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+                <mxCell id="47" value="Puchase_Managements Table" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="230" y="360" width="190" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="50" value="&lt;font style=&quot;font-size: 18px&quot;&gt;購入者情報&lt;br&gt;&lt;br&gt;購入商品&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="47">
                     <mxGeometry y="30" width="190" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;menlo&amp;#34; , &amp;#34;monaco&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; line-height: 18px&quot;&gt;&lt;div&gt;has_one :address&lt;/div&gt;&lt;div&gt;belongs_to :user&lt;/div&gt;&lt;div&gt;belongs_to :items&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
-                    <mxGeometry x="210" y="520" width="140" height="60" as="geometry"/>
+                <mxCell id="53" value="&lt;div style=&quot;color: rgb(212 , 212 , 212) ; background-color: rgb(30 , 30 , 30) ; font-family: &amp;#34;menlo&amp;#34; , &amp;#34;monaco&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; line-height: 18px&quot;&gt;&lt;div&gt;has_one :address&lt;/div&gt;&lt;div&gt;belongs_to :user&lt;/div&gt;&lt;div&gt;belongs_to :item&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+                    <mxGeometry x="215" y="520" width="130" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="65" value="" style="endArrow=none;html=1;rounded=0;exitX=1.005;exitY=0.623;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="50">
                     <mxGeometry relative="1" as="geometry">
