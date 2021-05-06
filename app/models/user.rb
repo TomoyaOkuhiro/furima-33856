@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, uniqueness: true
-  validates :password, presence: { message: 'Password Include both letters and numbers' }, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, length: { minimum: 6 }}
+  validates :password, format: {with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, length: { minimum: 6 } , message: 'Include both letters and numbers' }
   with_options presence: true do
    validates :nickname
    validates :last_name, format: {with: /\A[ぁ-んァ-ン一-龥々]/ }
