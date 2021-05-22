@@ -1,5 +1,4 @@
 window.addEventListener('load', () => {
-  console.log("OK");
   const priceInput = document.getElementById("item-price")
    priceInput.addEventListener("input", () => {
     const inputValue = priceInput.value;
@@ -13,7 +12,4 @@ window.addEventListener('load', () => {
 
 
 
-// 金額の場所を指定する必要がある(ID) (①金額入力欄、②販売手数料、③利益)
-// 入力時にイベントが発火するという記述(addEventListener)
- // 入力された金額の計算を行う
-// ビューに反映させる必要がある(innerHTML)
+

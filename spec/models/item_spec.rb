@@ -10,11 +10,11 @@ RSpec.describe Item, type: :model do
       it 'image,name,description,category_id,status_id,shipping_cost_id,shipping_area_id,shipping_day_id,priceがあれば出品できる' do
         expect(@item).to be_valid
       end
-      it 'priceが300円なら出品できる' do
+      it 'priceが300円以上なら出品できる' do
         @item.price = 300
         expect(@item).to be_valid
       end
-      it 'priceが9,999,999円なら出品できる' do
+      it 'priceが9,999,999円以下なら出品できる' do
       @item.price = 9_999_999
       expect(@item).to be_valid
       end
