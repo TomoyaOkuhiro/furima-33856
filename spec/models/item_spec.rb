@@ -42,29 +42,29 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'category_idがないと出品できない' do
-        @item.category_id = 1
+        @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Category must be other than 0")
       end
       it 'Status_idがないと出品できない' do
-        @item.status_id = 1
+        @item.status_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Status must be other than 0")
       end
       it 'shipping_cost_idがないと出品できない' do
-        @item.shipping_cost_id = 1
+        @item.shipping_cost_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Shipping cost must be other than 0")
       end
       it 'shipping_area_idがないと出品できない' do
-        @item.shipping_area_id = 1
+        @item.shipping_area_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Shipping area must be other than 0")
       end
       it 'shipping_day_idがないと出品できない' do
-        @item.shipping_day_id = 1
+        @item.shipping_day_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Shipping day must be other than 0")
       end
       it 'priceがないと出品できない' do
         @item.price = ''
@@ -79,7 +79,7 @@ RSpec.describe Item, type: :model do
       it 'priceが9,999,999円以上だと出品できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
       it 'priceが半角数字でないと出品できない' do
         @item.price = '３００'
@@ -95,6 +95,11 @@ RSpec.describe Item, type: :model do
         @item.price = "gohyakuen"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it 'userが紐づいてなければ登録できない' do
+        @item.user = @user
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
