@@ -33,7 +33,6 @@ class MarketsController < ApplicationController
     else
        render:edit
     end
-
   end
   private
   def item_params
