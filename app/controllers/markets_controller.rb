@@ -22,10 +22,19 @@ class MarketsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  #def edit
-  #end
+  def edit
+    @item = Item.find(params[:id])
+  end
 
+  def update
+       @item = Item.find(params[:id])
+    if @item.update(item_params)
+       redirect_to root_path
+    else
+       render:edit
+    end
 
+  end
   private
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :status_id, :shipping_cost_id, :shipping_area_id, :shipping_day_id, :price, :image).merge(user_id: current_user.id)
