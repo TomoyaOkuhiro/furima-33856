@@ -1,7 +1,7 @@
 class MarketsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update]
-  before_action :only_buyer, only: [:edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :only_buyer, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order(id: :DESC)
@@ -34,13 +34,13 @@ class MarketsController < ApplicationController
     end
   end
 
-  #def destroy
-    #if @prototype.destroy
-     # redirect_to root_path
-  #else
-     # redirect_to root_path
-    #end
-  ##end
+  def destroy
+    if @item.destroy
+     redirect_to root_path
+  else
+     redirect_to root_path
+    end
+  end
   private
   def item_params
     params.require(:item).permit(:name, :description, :category_id, :status_id, :shipping_cost_id, :shipping_area_id, :shipping_day_id, :price, :image).merge(user_id: current_user.id)
