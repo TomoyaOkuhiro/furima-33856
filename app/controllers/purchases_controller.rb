@@ -2,7 +2,8 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only:[:index,:create]
   before_action :only_buyer, only:[:index, :create]
-
+  before_action :sold_out, only:[:index,:create]
+  
   def index
     @purchase = Form.new
 
@@ -39,8 +40,13 @@ class PurchasesController < ApplicationController
   end
 
   def only_buyer
-    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path unless current_user.id != @item.user_id
   end
     
+  def sold_out
+    redirect_to root_path unless @item.purchase_management != 0
+  end
+
+  
 
 end
