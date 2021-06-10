@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only:[:index,:create]
+  before_action :only_buyer, only:[:index, :create]
 
   def index
     @purchase = Form.new
@@ -35,4 +37,10 @@ class PurchasesController < ApplicationController
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
   end
+
+  def only_buyer
+    redirect_to root_path if current_user.id == @item.user_id
+  end
+    
+
 end
