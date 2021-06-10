@@ -1,7 +1,7 @@
 class MarketsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :only_buyer, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :only_buyer, only: [:edit, :update]
 
   def index
     @items = Item.all.order(id: :DESC)
@@ -35,7 +35,7 @@ class MarketsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
+    if @prototype.destroy
      redirect_to root_path
   else
      redirect_to root_path
