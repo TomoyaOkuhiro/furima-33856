@@ -2,7 +2,10 @@ require 'rails_helper'
 
   RSpec.describe Form, type: :model do
     before do
-     @form = FactoryBot.build(:form)
+      @item = FactoryBot.create(:item)
+      @user = FactoryBot.create(:user)
+     @form = FactoryBot.build(:form, item_id:@item.id, user_id:@user.id)
+     sleep 0.5
     end
   
     describe '商品購入機能' do
@@ -53,10 +56,30 @@ require 'rails_helper'
           @form.valid?
           expect(@form.errors.full_messages).to include("Phone number is invalid")
         end
+        it 'phone_numberが英数混合では登録できない' do
+          @form.phone_number = "0901234aiue"
+          @form.valid?
+          expect(@form.errors.full_messages).to include("Phone number is invalid")
+        end
+        it 'phone_numberが12桁以上では登録できない' do
+          @form.phone_number = "090123456789"
+          @form.valid?
+          expect(@form.errors.full_messages).to include("Phone number is invalid")
+        end
         it "tokenが空では登録できないこと" do
           @form.token = nil
           @form.valid?
           expect(@form.errors.full_messages).to include("Token can't be blank")
+        end
+        it "user_idがなければ登録できない" do
+          @form.user_id = nil
+          @form.valid?
+          expect(@form.errors.full_messages).to include("User can't be blank")
+        end
+        it "item_idがなければ登録できないこと" do
+          @form.item_id = nil
+          @form.valid?
+          expect(@form.errors.full_messages).to include("Item can't be blank")
         end
       end
     end
