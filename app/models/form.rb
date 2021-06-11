@@ -15,4 +15,3 @@
     sell = PurchaseManagement.create(user_id: user_id, item_id: item_id)
     Address.create(purchase_management: purchase_management, post_code: post_code, phone_number: phone_number, shipping_area_id: shipping_area_id, city: city, address: address, building_name: building_name, purchase_management_id: sell.id)
   end
-end
