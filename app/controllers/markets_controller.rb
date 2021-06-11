@@ -51,7 +51,7 @@ class MarketsController < ApplicationController
   end
 
   def only_buyer
-    if current_user.id == @item.user_id
+    if current_user.id != @item.user_id
       redirect_to root_path
     end
   end
