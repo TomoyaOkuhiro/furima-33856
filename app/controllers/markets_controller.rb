@@ -2,7 +2,7 @@ class MarketsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :only_buyer, only: [:edit, :update, :destroy]
-
+  before_action :sold_edit, only:[:edit,:destroy, :update]
   def index
     @items = Item.all.order(id: :DESC)
   end
@@ -51,6 +51,15 @@ class MarketsController < ApplicationController
   end
 
   def only_buyer
-    redirect_to root_path unless current_user.id == @item.user_id
+    if current_user.id != @item.user_id
+      redirect_to root_path
+    end
   end
+
+  def sold_edit
+    if @item.purchase_management.present?
+       redirect_to root_path 
+    end
+  end
+  
 end 

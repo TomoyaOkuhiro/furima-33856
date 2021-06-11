@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_cost
   belongs_to :shipping_area
   belongs_to :shipping_day
- #has_one :purchase_management
+  has_one :purchase_management
   has_one_attached :image 
 
   with_options presence: true do
