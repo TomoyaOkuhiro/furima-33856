@@ -3,7 +3,6 @@ const pay = () => {
   // PAY.JPテスト公開鍵(環境変数に組み込み済み)
 
   const form = document.getElementById("charge-form");
-    console.log(form)
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const formResult = document.getElementById("charge-form");
