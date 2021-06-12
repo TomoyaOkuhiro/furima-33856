@@ -16,7 +16,6 @@ class Form
   def save
     # 各テーブルにデータを保存する処理を書く
     sell = PurchaseManagement.create(user_id: user_id, item_id: item_id)
-    binding.pry
     Address.create( post_code: post_code, phone_number: phone_number, shipping_area_id: shipping_area_id, city: city, address: address, building_name: building_name, purchase_management_id: sell.id)
   end
 end
